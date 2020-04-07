@@ -1,13 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
+import AppShell from './AppShell';
 
-class App extends Component {
-  	render() {
-		return (
-	  		<>
-			  <h3>Hello world</h3>
-	  		</>
-		);
-  	}
+function App() {
+  return (
+	<div>
+	  <AppShell/>
+	</div>
+  );
 }
-
 export default App;
