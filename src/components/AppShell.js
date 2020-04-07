@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -15,23 +17,36 @@ const styles = {
     }
 }
  
-function AppShell({classes}) {
+function AppShell({classes, children}) {
     const [toggle, setToggle] = useState(false);
     const handleDrawerToggle = () => {
         setToggle(prevValue => !prevValue);
     }
 
     return (
-        <div className={classes.root}>
-            <AppBar position="static">
-                <IconButton className={classes.menuButton} color="inherit" onClick={handleDrawerToggle}>
-                    <MenuIcon/>
-                </IconButton>
-            </AppBar>
-            <Drawer open={toggle}>
-                <MenuItem onClick={handleDrawerToggle}>Home</MenuItem>
-            </Drawer>
-        </div>
+        <>
+            <div className={classes.root}>
+                <AppBar position="static">
+                    <IconButton className={classes.menuButton} color="inherit" onClick={handleDrawerToggle}>
+                        <MenuIcon/>
+                    </IconButton>
+                </AppBar>
+                <Drawer open={toggle}>
+                    <MenuItem onClick={handleDrawerToggle}>
+                        <Link component={RouterLink} to="/">Home</Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleDrawerToggle}>
+                        <Link component={RouterLink} to="/texts">Texts</Link>
+                    </MenuItem>
+                    <MenuItem onClick={handleDrawerToggle}>
+                        <Link component={RouterLink} to="/words">Words</Link>
+                    </MenuItem>
+                </Drawer>
+            </div>
+            <div id="content" style={{margin: 'auto', marginTop: '20px'}}>
+                {children}
+            </div>
+        </>
     );
 }
 
