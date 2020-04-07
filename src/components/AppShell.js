@@ -33,13 +33,13 @@ function AppShell({classes, children}) {
                 </AppBar>
                 <Drawer open={toggle}>
                     <MenuItem onClick={handleDrawerToggle}>
-                        <Link component={RouterLink} to="/">Home</Link>
+                        <Link component={RouterLink} to="/">홈</Link>
                     </MenuItem>
                     <MenuItem onClick={handleDrawerToggle}>
-                        <Link component={RouterLink} to="/texts">Texts</Link>
+                        <Link component={RouterLink} to="/texts">텍스트 관리</Link>
                     </MenuItem>
                     <MenuItem onClick={handleDrawerToggle}>
-                        <Link component={RouterLink} to="/words">Words</Link>
+                        <Link component={RouterLink} to="/words">단어 관리</Link>
                     </MenuItem>
                 </Drawer>
             </div>
