@@ -19,7 +19,7 @@ const styles = theme => ({
         bottom: '20px',
         right: '20px'
     }
-})
+});
 
 const databaseURL = "https://word-cloud-9dde8.firebaseio.com";
 
@@ -54,7 +54,6 @@ function Words({classes}) {
         }).then(data => {
             let nextState = state.words;
             nextState[data.name] = word;
-            console.log('postwords setstate');
             setState({...state, 
                 words: nextState,
                 dialog: false,
@@ -80,7 +79,6 @@ function Words({classes}) {
 
     const handleDialogToggle = () => {
         setState({...state, dialog: !state.dialog});
-        console.log('toggling')
     }
 
     const handleValueChange = e => {
@@ -101,17 +99,11 @@ function Words({classes}) {
 
     const handleDelete = id => {
         deleteWords(id);
-        console.log(id)
     }
 
     useEffect(() => {
         getWords();
     },[])
-    
-    useEffect(() => {
-        console.log('words', state.words);
-        console.log('dialog', state.dialog);
-    },[state.words, state.dialog])
 
     return (
         <>
@@ -160,8 +152,7 @@ function Words({classes}) {
                             <DialogActions>
                                 <Button variant="contained" color="primary" onClick={handleSubmit}>추가</Button>
                                 <Button variant="outlined" color="primary" onClick={handleDialogToggle}>닫기</Button>
-                            </DialogActions>
-                            
+                            </DialogActions>                            
                         </Dialog>
                     </div>                    
                 )
